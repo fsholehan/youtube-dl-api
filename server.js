@@ -20,7 +20,10 @@ app.get("/api/v1/music", async (req, res) => {
 app.get("/api/v1/lyric", async (req, res) => {
   const { title } = req.query;
   await lyricsFinder.LyricsFinder(title).then((data) => {
-    res.json(data);
+    const result = {
+      data
+    }
+    res.json(result);
   });
 });
 
