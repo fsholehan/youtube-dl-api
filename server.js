@@ -1,7 +1,7 @@
 const ytdl = require("ytdl-core");
 const express = require("express");
 const cors = require("cors");
-const PORT = 8000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -15,4 +15,4 @@ app.get("/api/v1/music", async (req, res) => {
   res.json(audioFormats);
 });
 
-app.listen(PORT, () => console.log(`Server running on, ${PORT}`));
+app.listen(port, () => console.log(`Server running on, ${port}`));
