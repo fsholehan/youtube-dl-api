@@ -13,10 +13,12 @@
   "dependencies": {
     "@jeve/lyrics-finder": "^1.0.1",
     "axios": "^0.26.1",
+    "billboard-top-100": "^2.6.2",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
-    "ytdl-core": "^4.11.0"
+    "ytdl-core": "^4.11.0",
+    "ytsr": "^3.7.0"
   },
   "engines": {
     "node": "14.17.3"
