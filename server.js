@@ -74,9 +74,9 @@ app.get("/api/v1/billboard", async (req, res) => {
 });
 
 //autocomplete
-app.get("/api/v1/queries", async (req, res) => {
+app.get("/api/v1/queries", (req, res) => {
   const { keyword } = req.query;
-  await AutoComplete(keyword, (err, queries) => {
+  AutoComplete(keyword, (err, queries) => {
     if (err) throw err;
     res.json(queries);
   });
