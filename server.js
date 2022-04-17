@@ -4,6 +4,7 @@ const cors = require("cors");
 const lyricsFinder = require("@jeve/lyrics-finder");
 const { getChart } = require("billboard-top-100");
 const ytsr = require("ytsr");
+const AutoComplete = require("youtube-autocomplete");
 
 const port = process.env.PORT || 3000;
 
@@ -42,11 +43,15 @@ app.get("/api/v1/music/related", async (req, res) => {
 
 //details video
 app.get("/api/v1/music/details", async (req, res) => {
-  const { videoId } = req.query;
-  let info = await ytdl.getInfo(videoId);
-  let details = info.videoDetails;
-  console.log("realted videos: ", details);
-  res.json(details);
+  try {
+    const { videoId } = req.query;
+    let info = await ytdl.getInfo(videoId);
+    let details = info.videoDetails;
+    console.log("video details: ", details);
+    res.json(details);
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 //get lyrics
@@ -65,6 +70,15 @@ app.get("/api/v1/billboard", async (req, res) => {
   getChart((err, chart) => {
     if (err) console.log(err);
     res.json(chart);
+  });
+});
+
+//autocomplete
+app.get("/api/v1/queries", async (req, res) => {
+  const { keyword } = req.query;
+  await AutoComplete(keyword, (err, queries) => {
+    if (err) throw err;
+    res.json(queries);
   });
 });
 
