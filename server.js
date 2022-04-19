@@ -6,7 +6,7 @@ const { getChart } = require("billboard-top-100");
 const ytsr = require("ytsr");
 const AutoComplete = require("youtube-autocomplete");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 const app = express();
 
@@ -78,7 +78,7 @@ app.get("/api/v1/queries", (req, res) => {
   const { keyword } = req.query;
   AutoComplete(keyword, (err, queries) => {
     if (err) throw err;
-    res.json(queries);
+    res.json(queries[1]);
   });
 });
 
