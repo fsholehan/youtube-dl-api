@@ -13,11 +13,14 @@
   "dependencies": {
     "@jeve/lyrics-finder": "^1.0.1",
     "axios": "^0.26.1",
-    "billboard-top-100": "^2.6.2",
+    "billboard-top-100": "^2.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "node-youtube-music": "^0.7.0",
     "nodemon": "^2.0.15",
     "youtube-autocomplete": "^0.0.1",
+    "youtubei.js": "^1.4.2",
     "ytdl-core": "^4.11.0",
     "ytsr": "^3.7.0"
   },

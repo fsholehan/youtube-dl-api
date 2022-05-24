@@ -2,13 +2,16 @@ const ytdl = require("ytdl-core");
 const express = require("express");
 const cors = require("cors");
 const lyricsFinder = require("@jeve/lyrics-finder");
-const { getChart } = require("billboard-top-100");
+const { getChart, listCharts } = require("billboard-top-100");
 const ytsr = require("ytsr");
 const AutoComplete = require("youtube-autocomplete");
+// const morgan = require("morgan");
 
 const port = process.env.PORT || 8000;
 
 const app = express();
+
+// app.use(morgan("dev"));
 
 app.use(cors());
 
@@ -70,6 +73,25 @@ app.get("/api/v1/billboard", async (req, res) => {
   getChart((err, chart) => {
     if (err) console.log(err);
     res.json(chart);
+  });
+});
+
+//get artist
+
+app.get("/api/v1/artist", async (req, res) => {
+  getChart("artist-100", (err, chart) => {
+    if (err) console.log(err);
+    res.json(chart);
+  });
+});
+
+//list billboard
+app.get("/api/v1/chart", async (req, res) => {
+  listCharts((err, charts) => {
+    if (err) console.log(err);
+    // array of all charts
+    res.json(charts);
+    // console.log(charts);
   });
 });
 
